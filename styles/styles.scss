@@ -1,0 +1,115 @@
+// =================================== FONTS =================================== //
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+// font-family: 'Ubuntu', sans-serif;
+
+
+// =================================== COLORS =================================== //
+
+$mainBlue: #034C8C;
+$footer: #E6E6E6;
+
+
+// =================================== MIXINS =================================== //
+
+@mixin activeLinkNavBar() {
+    background-color: $mainBlue;
+}
+
+// =================================== CSS =================================== //
+
+html {
+
+    font-family: 'Ubuntu', sans-serif;
+
+    ::selection {
+        background-color: $mainBlue;
+        color: white;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+// =================================== NAVBAR =================================== //
+
+nav {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    box-shadow: 0px 3px 12px -6px rgba(0, 0, 0, 0.5);
+
+    .logo {
+        padding: 1em;
+        width: 50px;
+        height: 20px;
+        background-image: url(../resources/navbar/logo.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .navLinksContainer {
+        display: flex;
+        gap: .5em;
+
+        .navLink {
+            width: max-content;
+            height: min-content;
+            text-align: center;
+            padding: 10px 30px;
+            transition: ease all .25s;
+            border-radius: 50px;
+            font-weight: 500;
+
+            &:hover {
+                color: white;
+                @include activeLinkNavBar;
+            }
+        }
+    }
+}
+
+// =================================== MAIN =================================== //
+
+
+// =================================== FOOTER =================================== //
+
+footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    width: 100%;
+    gap: 5em;
+background-color: $footer;
+padding:60px 0 60px 0;
+
+    .logo {
+        padding: 1em;
+        width: 50px;
+        height: 20px;
+        background-image: url(../resources/navbar/logo.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .footerLinks {
+        a {
+            height: 50px;
+            width: 50px;
+            background-image: url("https://i.picsum.photos/id/477/200/200.jpg?hmac=pGA68LBET23UPGB7L8xL1pA7PYT_x7JazGX__CnlliU");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+}
