@@ -19,6 +19,14 @@ $white: #FFFFFF;
     background-color: $blue;
 }
 
+@mixin bgImg($url, $pos:center, $attach:scroll) {
+    background-image: url($url);
+    background-position: $pos;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: $attach;
+}
+
 // =================================== CSS =================================== //
 
 html {
@@ -34,6 +42,12 @@ html {
 a {
     text-decoration: none;
     color: black;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
 }
 
 .inkuaButton {
@@ -69,9 +83,10 @@ nav {
         padding: 1em;
         width: 50px;
         height: 20px;
-        background-image: url(../resources/navbar/logo.svg);
-        background-position: center;
-        background-repeat: no-repeat;
+        @include bgImg("../resources/navbar/logo.svg");
+        // background-image: url(../resources/navbar/logo.svg);
+        // background-position: center;
+        // background-repeat: no-repeat;
         background-size: contain;
     }
 
@@ -87,43 +102,217 @@ nav {
 
 // =================================== MAIN =================================== //
 
-.introContainer {
-    background-image: url(../resources/index/indexMainImg.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
+.mainIndex {
+    .introContainer {
+        @include bgImg("../resources/index/indexMainImg.png");
+        // background-image: url(../resources/index/indexMainImg.png);
+        // background-position: center;
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        height: 100vh;
 
-    .indexIntro {
-        background-color: $white;
-        width: 35%;
-        border-radius: 0 50% 0 50%;
-        padding: 40px;
+        .indexIntro {
+            background-color: $white;
+            width: 35%;
+            border-radius: 0 50% 0 50%;
+            padding: 40px;
 
-        h2 {
-            color: $blue;
-            width: 50%;
+            h2 {
+                color: $blue;
+                width: 50%;
+            }
+
+            .introButton {
+                @extend .inkuaButton;
+                background-color: $blue;
+                color: $white;
+                border: none;
+            }
         }
 
-        .introButton{
+        .languagesButton {
             @extend .inkuaButton;
-            background-color: $blue;
-            color: $white;
-            border: none;
-        }
-    }
-    
-    .languagesButton{
-        @extend .inkuaButton;
-        background-color: $white;
-        color: #000000;
-        border: none;
-        &:hover{
             background-color: $white;
             color: #000000;
+            border: none;
+
+            &:hover {
+                background-color: $white;
+                color: #000000;
+            }
         }
     }
 }
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 40vh;
+    height: min-content;
+    padding: 5% 0 5% 10%;
+
+    h2 {
+        color: $darkBlue;
+        font-weight: 500;
+        font-size: 35px;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            padding: .5em 0;
+        }
+    }
+}
+
+.openSource {
+    min-height: 100vh;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    @include bgImg("../resources/index/indexOpenSource.png");
+    padding-left: 10%;
+
+    .openSourceText {
+        width: 45%;
+
+        h2 {
+            color: $darkBlue;
+            font-weight: bold;
+            word-spacing: .5em;
+            line-height: 1.5em;
+        }
+
+        p {
+            line-height: 1.5em;
+            width: 80%;
+        }
+    }
+}
+
+.inkuaNumbers {
+    background-color: $darkBlue;
+    min-height: 80vh;
+    height: min-content;
+    text-align: center;
+    color: $white;
+    padding: 5% 10%;
+
+    .inkuaNumbersIntroContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 25%;
+        border-bottom: 3px solid $white;
+        margin: auto;
+
+        h2 {
+            font-size: 35px;
+        }
+
+        h3 {
+            font-weight: normal;
+            padding-bottom: 1em;
+        }
+    }
+
+    .inkuaNumbersContainer {
+        display: flex;
+    }
+}
+
+.partners {
+    min-height: 80vh;
+    height: min-content;
+    text-align: center;
+    padding: 5% 0 10% 0;
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        font-size: 35px;
+        font-weight: normal;
+        color: $darkBlue;
+    }
+
+    .bottomPartners {
+        display: flex;
+        width: 100%;
+        @include bgImg("../resources/index/partnersBlob.svg");
+        min-height: 60vh;
+
+        .brands {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .brandImage {
+                height: auto;
+                width: 150px;
+            }
+        }
+
+        .partnersLeft {
+            width: 40%;
+        }
+
+        .partnersCenter {
+            width: 20%;
+            background-color: red;
+
+            .partnersButton {
+                @extend .inkuaButton;
+            }
+        }
+
+        .partnersRight {
+            width: 40%;
+        }
+    }
+}
+
+.newsletter {
+    min-height: 50vh;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    padding: 0 25%;
+    background-color: $blue;
+    color: $white;
+    text-align: center;
+
+    input {
+        width: 50%;
+        border-radius: 50px;
+        border: none;
+        padding: .5em;
+    }
+
+    h2 {
+        font-weight: normal;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .newsletterButton {
+        @extend .inkuaButton;
+        background-color: $blue;
+        border: 2px solid $white;
+        color: $white;
+    }
+}
+
 
 // =================================== FOOTER =================================== //
 
@@ -141,9 +330,10 @@ footer {
         padding: 1em;
         width: 50px;
         height: 20px;
-        background-image: url(../resources/navbar/logo.svg);
-        background-position: center;
-        background-repeat: no-repeat;
+        @include bgImg("../resources/navbar/logo.svg");
+        // background-image: url(../resources/navbar/logo.svg);
+        // background-position: center;
+        // background-repeat: no-repeat;
         background-size: contain;
     }
 
