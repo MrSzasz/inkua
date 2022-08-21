@@ -33,6 +33,21 @@ a {
     color: black;
 }
 
+.inkuaButton{
+    width: max-content;
+    height: min-content;
+    text-align: center;
+    padding: 10px 30px;
+    transition: ease all .25s;
+    border-radius: 50px;
+    font-weight: 500;
+
+    &:hover {
+        color: white;
+        @include activeLinkNavBar;
+    }
+}
+
 // =================================== NAVBAR =================================== //
 
 nav {
@@ -61,18 +76,7 @@ nav {
         gap: .5em;
 
         .navLink {
-            width: max-content;
-            height: min-content;
-            text-align: center;
-            padding: 10px 30px;
-            transition: ease all .25s;
-            border-radius: 50px;
-            font-weight: 500;
-
-            &:hover {
-                color: white;
-                @include activeLinkNavBar;
-            }
+            @extend .inkuaButton;
         }
     }
 }
@@ -89,8 +93,8 @@ footer {
     justify-content: center;
     width: 100%;
     gap: 5em;
-background-color: $footer;
-padding:60px 0 60px 0;
+    background-color: $footer;
+    padding: 60px 0 60px 0;
 
     .logo {
         padding: 1em;
@@ -100,6 +104,12 @@ padding:60px 0 60px 0;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+    }
+
+    .footerPages {
+        ul {
+            list-style: none;
+        }
     }
 
     .footerLinks {
