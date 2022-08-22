@@ -732,7 +732,7 @@ nav {
 
         .inkuaButtonActive {
             background-color: $white;
-            color: $blue;
+            color: $blue !important;
             margin-top: 2em;
         }
     }
