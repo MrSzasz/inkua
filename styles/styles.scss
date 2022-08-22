@@ -30,13 +30,14 @@ $white: #FFFFFF;
 // =================================== CSS =================================== //
 
 html {
-
-    font-family: 'Ubuntu', sans-serif;
-
     ::selection {
         background-color: $blue;
         color: white;
     }
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 a {
@@ -48,6 +49,11 @@ h1,
 h2,
 h3 {
     margin: 0;
+}
+
+h1,
+h2 {
+    color: $darkBlue !important;
 }
 
 .inkuaButton {
@@ -66,6 +72,13 @@ h3 {
     }
 }
 
+.inkuaButtonActive {
+    @extend .inkuaButton;
+    background-color: $blue;
+    color: $white;
+    border: none !important;
+}
+
 // =================================== NAVBAR =================================== //
 
 nav {
@@ -74,19 +87,18 @@ nav {
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 0 15px 0;
-    box-shadow: 0px 3px 12px -6px rgba(0, 0, 0, 0.5);
+    padding: 10px 2em;
+    box-shadow: 0px 1.02708px 10.2708px 3.08125px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    background-color: $white;
 
     .logo {
         padding: 1em;
-        width: 50px;
-        height: 20px;
+        width: 90px;
+        height: 45px;
         @include bgImg("../resources/navbar/logo.svg");
-        // background-image: url(../resources/navbar/logo.svg);
-        // background-position: center;
-        // background-repeat: no-repeat;
         background-size: contain;
     }
 
@@ -104,34 +116,32 @@ nav {
 
 .mainIndex {
     .introContainer {
-        @include bgImg("../resources/index/indexMainImg.png");
-        // background-image: url(../resources/index/indexMainImg.png);
-        // background-position: center;
-        // background-size: cover;
-        // background-repeat: no-repeat;
+        background: linear-gradient(180deg, rgba(28, 54, 97, 0.492) 6.92%, rgba(28, 54, 97, 0) 69.62%), url("../resources/index/indexMainImg.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         height: 100vh;
+        padding: 10%;
 
         .indexIntro {
             background-color: $white;
-            width: 35%;
-            border-radius: 0 50% 0 50%;
-            padding: 40px;
+            width: 432px;
+            border-radius: 0 25% 0 25%;
+            padding: 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
             h2 {
-                color: $blue;
-                width: 50%;
-            }
-
-            .introButton {
-                @extend .inkuaButton;
-                background-color: $blue;
-                color: $white;
-                border: none;
+                color: $blue !important;
             }
         }
 
         .languagesButton {
             @extend .inkuaButton;
+            position: absolute;
+            bottom: 2em;
+            right: 2em;
             background-color: $white;
             color: #000000;
             border: none;
@@ -145,12 +155,30 @@ nav {
 }
 
 .benefits {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 40vh;
     height: min-content;
     padding: 5% 0 5% 10%;
+    overflow: hidden;
+
+    .curveShapeIn {
+        position: absolute;
+        top: -95%;
+        right: -8%;
+        border: 3px solid $darkBlue;
+        width: 432px;
+        height: 400px;
+        border-radius: 0 25% 0 25%;
+    }
+
+    .curveShapeOut {
+        @extend .curveShapeIn;
+        top: -75%;
+        right: -5%;
+    }
 
     h2 {
         color: $darkBlue;
@@ -167,13 +195,28 @@ nav {
     }
 }
 
+
 .openSource {
+    position: relative;
     min-height: 100vh;
     height: min-content;
     display: flex;
     align-items: center;
     @include bgImg("../resources/index/indexOpenSource.png");
     padding-left: 10%;
+
+    .dots {
+        position: absolute;
+        right: 0;
+        top: -15%;
+        width: 150px;
+        height: 200px;
+        background-color: transparent;
+        background-image: radial-gradient($blue 10%, transparent 11%);
+        background-size: 25px 25px;
+        background-position: 0 0, 5px 5px;
+        background-repeat: repeat;
+    }
 
     .openSourceText {
         width: 45%;
@@ -199,27 +242,40 @@ nav {
     text-align: center;
     color: $white;
     padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .inkuaNumbersIntroContainer {
         display: flex;
         flex-direction: column;
         gap: 1em;
-        width: 25%;
+        width: max-content;
         border-bottom: 3px solid $white;
         margin: auto;
 
         h2 {
             font-size: 35px;
+            color: $white !important;
         }
 
         h3 {
             font-weight: normal;
-            padding-bottom: 1em;
+            font-size: large;
+            padding-bottom: 2em;
         }
     }
 
     .inkuaNumbersContainer {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5% 5% 0 5%;
+
+        h4 {
+            font-size: 50px;
+        }
     }
 }
 
@@ -243,7 +299,7 @@ nav {
         display: flex;
         width: 100%;
         @include bgImg("../resources/index/partnersBlob.svg");
-        min-height: 60vh;
+        min-height: 70vh;
 
         .brands {
             display: flex;
@@ -258,20 +314,28 @@ nav {
         }
 
         .partnersLeft {
-            width: 40%;
+            width: 30%;
         }
 
         .partnersCenter {
-            width: 20%;
-            background-color: red;
+            width: 40%;
+            @include bgImg("../resources/index/phone.png");
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
 
-            .partnersButton {
-                @extend .inkuaButton;
+            h3 {
+                font-size: large;
+                margin: 0;
+                color: $blue;
             }
         }
 
         .partnersRight {
-            width: 40%;
+            width: 30%;
         }
     }
 }
@@ -290,15 +354,18 @@ nav {
     text-align: center;
 
     input {
-        width: 50%;
+        width: 70%;
         border-radius: 50px;
         border: none;
         padding: .5em;
+        padding: .25em .75em;
+        border: 1px solid darkgray;
     }
 
     h2 {
         font-weight: normal;
         margin: 0;
+        color: $white !important;
     }
 
     p {
@@ -314,6 +381,440 @@ nav {
 }
 
 
+// =================================== ABOUT US =================================== //
+
+.aboutUsIntro {
+    padding: 10% 5% 0 5%;
+
+    h1 {
+        color: $darkBlue;
+        margin-bottom: 1em;
+    }
+}
+
+.cardsContainerAboutUs {
+    padding: 5%;
+    width: 100%;
+
+    .cardAboutUs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: ease all .25s;
+
+        &:hover {
+            scale: .95;
+        }
+
+        img {
+            min-width: 300px;
+            width: 80%;
+            height: 150px;
+            border-radius: 6px 6px 0 0;
+            object-fit: cover;
+            justify-self: center;
+        }
+
+        figcaption {
+            min-width: 300px;
+            width: 80%;
+            background-color: $blue;
+            color: $white;
+            padding: .75em;
+            margin-bottom: 1em;
+            border-radius: 0 0 6px 6px;
+        }
+    }
+}
+
+.ourTeam {
+    min-height: 50vh;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    padding: 0 25%;
+    background-color: $gray;
+    color: #000000;
+    text-align: center;
+
+    h2 {
+        color: $darkBlue;
+    }
+}
+
+// =================================== JOIN US =================================== //
+
+.mainJoinUs {
+    .buttonGroup {
+        border-bottom: 2px solid $gray;
+        width: max-content;
+        display: flex;
+        gap: 2em;
+
+        .sectionButton {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            transition: ease all .25s;
+
+            &:hover {
+                @extend .sectionButtonActive;
+            }
+        }
+
+        .sectionButtonActive {
+            color: $blue;
+            border-bottom: 3px solid $blue;
+        }
+    }
+
+    padding: 10%;
+
+    .selectorJoinUs {
+        position: relative;
+
+        .peopleImg {
+            position: absolute;
+            @include bgImg("../resources/joinUs/people.svg");
+            height: 325px;
+            width: 325px;
+            right: 0;
+            top: 2.5em;
+        }
+    }
+
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    .joinUsCard {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: .5em;
+
+        h4 {
+            font-size: large;
+        }
+
+        a {
+            color: $blue;
+            border-bottom: 1px solid $blue;
+        }
+
+        p {
+            margin-top: 1em;
+        }
+    }
+
+    .testimonialJoinUs {
+        padding-top: 5%;
+        .sliderTestimonials {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5%;
+
+            .testimonialCards {
+                min-height: 450px;
+                height: min-content;
+                width: 30%;
+                padding: 3%;
+                box-shadow: 0px 0px 18px rgba(3, 76, 140, 0.27);
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+
+                p {
+                    text-align: center;
+                    margin: 0;
+                }
+
+                img {
+                    height: 75px;
+                    width: 75px;
+                    object-fit: cover;
+                }
+
+                h2,
+                h4 {
+                    height: min-content;
+                    margin: 0;
+                }
+
+                h2 {
+                    font-size: large;
+                }
+
+                h4 {
+                    color: $blue;
+                    font-size: medium;
+                }
+            }
+        }
+    }
+}
+
+// =================================== PLATFORM =================================== //
+
+.mainPlatform {
+    background-color: #F6F9FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 10%;
+    @include bgImg("../resources/platform/svgBack4.svg");
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $white;
+        width: 50%;
+        padding: 10% 5%;
+        gap: 1em;
+        border-radius: 30px;
+        box-shadow: 0px 0px 18px rgba(3, 76, 140, 0.27);
+
+        h2 {
+            color: #000000 !important;
+        }
+
+        h3 {
+            font-size: large;
+        }
+
+        input {
+            width: 80%;
+            border-radius: 4px;
+            padding: .25em .75em;
+            border: 1px solid darkgray;
+        }
+    }
+}
+
+// =================================== FAQ =================================== //
+
+.mainFaq {
+    padding: 10%;
+
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    .accordion-item {
+        border: none;
+        border-bottom: 2px solid $gray;
+
+        .accordion-button {
+            padding-left: 0px;
+            background-color: transparent;
+            color: $blue;
+            font-weight: bold;
+            font-size: 20px;
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            &::after {
+
+                background-image: url("../resources/faq/arrow.svg");
+            }
+        }
+    }
+}
+
+// =================================== CONTACT =================================== //
+
+.mainContact {
+    background-color: $darkBlue;
+    min-height: 90vh;
+    height: min-content;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: $white !important;
+    }
+
+    form {
+        width: min-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+
+        .inputSection {
+            display: flex;
+            gap: 1em;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: .25em .75em;
+            border: 1px solid darkgray;
+            border-radius: 4px;
+        }
+
+        .capthaContainer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 1em;
+
+            .checkboxContainer {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+
+                label {
+                    color: $white;
+                    width: max-content;
+                }
+            }
+
+            button {
+                height: 4em;
+                width: 100%;
+            }
+        }
+
+        .inkuaButtonActive {
+            background-color: $white;
+            color: $blue;
+            margin-top: 2em;
+        }
+    }
+}
+
+// =================================== DONATE =================================== //
+
+.mainDonations {
+    @include bgImg("../resources/donate/main.jpg", 0 -100px);
+
+    .donationTop {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 90vh;
+        padding: 10%;
+
+        .upperText {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            width: 70%;
+
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 23px;
+                font-weight: lighter;
+            }
+        }
+
+        h2,
+        h1,
+        a,
+        p {
+            color: $white !important;
+        }
+
+        a {
+            border-bottom: 1px solid $white;
+        }
+
+        .donationLeft {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+    }
+
+    .donationRight {
+        .donationContainer {
+            background-color: $white;
+            padding: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+
+            input {
+                width: 100%;
+                border-radius: 50px;
+                border: none;
+                padding: .5em 1em;
+                background: linear-gradient(180deg, rgba(3, 76, 140, 0.04) 0%, rgba(3, 76, 140, 0.1) 100%);
+            }
+
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            button {
+                width: 100%;
+                border: 2px solid $darkBlue;
+            }
+
+            .applePay {
+                @extend .inkuaButtonActive;
+                width: 100%;
+                background-color: #000000;
+                color: $white;
+
+                &:hover {
+                    background-color: #000000;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .donationBottom {
+        min-height: 50vh;
+        height: min-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+        padding: 0 25%;
+        background-color: $white;
+        color: #000000;
+        text-align: center;
+    }
+}
+
 // =================================== FOOTER =================================== //
 
 footer {
@@ -326,31 +827,81 @@ footer {
     background-color: $gray;
     padding: 60px 0 60px 0;
 
+    h6 {
+        margin-bottom: .5em;
+    }
+
     .logo {
         padding: 1em;
-        width: 50px;
-        height: 20px;
+        width: 90px;
+        height: 45px;
         @include bgImg("../resources/navbar/logo.svg");
-        // background-image: url(../resources/navbar/logo.svg);
-        // background-position: center;
-        // background-repeat: no-repeat;
         background-size: contain;
     }
 
     .footerPages {
         ul {
             list-style: none;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+
+            li {
+                &:hover {
+                    a {
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+
+    .footerContactText {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.5em;
+
+        p {
+            margin-bottom: .5em;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 15px;
         }
     }
 
     .footerLinks {
-        a {
-            height: 50px;
-            width: 50px;
-            background-image: url("https://i.picsum.photos/id/477/200/200.jpg?hmac=pGA68LBET23UPGB7L8xL1pA7PYT_x7JazGX__CnlliU");
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+
+        .footerIcons {
+            display: flex;
+            flex-direction: column;
+            padding-top: .3em;
+            row-gap: 2em;
+
+            .footerIconsLinks {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 2em;
+            }
+
+            a {
+                width: min-content;
+
+                i {
+                    transition: ease all .25s;
+                    font-size: 25px;
+                    color: #8094B7;
+
+                    &:hover {
+                        color: $darkBlue;
+                    }
+                }
+            }
         }
     }
 }
