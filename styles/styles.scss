@@ -67,7 +67,7 @@ h2 {
     cursor: pointer;
 
     &:hover {
-        color: white;
+        color: white !important;
         @include activeLinkNavBar;
     }
 }
@@ -77,6 +77,31 @@ h2 {
     background-color: $blue;
     color: $white;
     border: none !important;
+}
+
+#goToTop {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    height: 60px;
+    width: 60px;
+    background-color: $darkBlue;
+    border: none;
+    transition: ease all .25s;
+    display: none;
+
+    i {
+        font-size: 1.5em;
+        color: $white;
+    }
+
+    &:hover {
+        background-color: $blue;
+    }
 }
 
 // =================================== NAVBAR =================================== //
@@ -90,9 +115,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 10px 2em;
-    box-shadow: 0px 1.02708px 10.2708px 3.08125px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
     z-index: 100;
-    background-color: $white;
+    background-color: transparent;
+    transition: ease all .25s;
 
     .logo {
         padding: 1em;
@@ -148,7 +174,7 @@ nav {
 
             &:hover {
                 background-color: $white;
-                color: #000000;
+                color: #000000 !important;
             }
         }
     }
@@ -515,6 +541,7 @@ nav {
 
     .testimonialJoinUs {
         padding-top: 5%;
+
         .sliderTestimonials {
             display: flex;
             justify-content: space-between;
@@ -699,6 +726,7 @@ nav {
             button {
                 height: 4em;
                 width: 100%;
+                @include bgImg("https://developers.google.com/recaptcha/images/newCaptchaAnchor.gif")
             }
         }
 
