@@ -18,7 +18,7 @@
 
 <body>
 
-    <nav data-bg="true">
+    <nav class="navBar" data-bg="true" id="bigScreen">
         <a href="#" class="logo"></a>
         <div class="navLinksContainer">
             <a href="./pages/aboutUs.html" class="navLink">Sobre nosotros</a>
@@ -29,7 +29,21 @@
             <a href="./pages/donate.html" class="navLink">Donar</a>
         </div>
     </nav>
-
+    
+    
+    <button data-big-hide="true" id="expandNavBar"><i class="fa-solid fa-bars"></i></button>
+    <nav data-big-hide="true" class="navBar" data-bg="true" data-hidden="true" id="smallScreen">
+        <a href="#" class="logo logoSmall"></a>
+        <div class="navLinksContainerSmall">
+            <a href="./pages/aboutUs.html" class="navLinkSmall">Sobre nosotros</a>
+            <a href="./pages/joinUs.html" class="navLinkSmall">Forma parte</a>
+            <a href="./pages/platform.html" class="navLinkSmall">Plataforma</a>
+            <a href="./pages/faq.html" class="navLinkSmall">FAQ</a>
+            <a href="./pages/contact.html" class="navLinkSmall">Contacto</a>
+            <a href="./pages/donate.html" class="navLinkSmall">Donar</a>
+        </div>
+    </nav>
+    
     <main class="mainIndex">
         <div class="introContainer">
             <div class="indexIntro">
@@ -66,7 +80,7 @@
                 <h2>InKuA en números</h2>
                 <h3>Nuestra trayectoria</h3>
             </div>
-            <div class="inkuaNumbersContainer row row-cols-4">
+            <div class="inkuaNumbersContainer row row-cols-sm-2 row-cols-md-4 ">
                 <div>
                     <h4>264</h4>
                     <p>Participantes</p>

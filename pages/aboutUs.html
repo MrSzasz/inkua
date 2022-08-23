@@ -18,8 +18,8 @@
 
 <body>
 
-    <nav>
-        <a href="/" class="logo"></a>
+    <nav class="navBar" id="bigScreen">
+        <a href="../index.html" class="logo"></a>
         <div class="navLinksContainer">
             <a href="#" class="navLink">Sobre nosotros</a>
             <a href="./joinUs.html" class="navLink">Forma parte</a>
@@ -27,6 +27,19 @@
             <a href="./faq.html" class="navLink">FAQ</a>
             <a href="./contact.html" class="navLink">Contacto</a>
             <a href="./donate.html" class="navLink">Donar</a>
+        </div>
+    </nav>
+
+    <button data-big-hide="true" id="expandNavBar"><i class="fa-solid fa-bars"></i></button>
+    <nav data-big-hide="true" class="navBar" data-bg="true" data-hidden="true" id="smallScreen">
+        <a href="../index.html" class="logo logoSmall"></a>
+        <div class="navLinksContainerSmall">
+            <a href="#" class="navLinkSmall">Sobre nosotros</a>
+            <a href="../pages/joinUs.html" class="navLinkSmall">Forma parte</a>
+            <a href="../pages/platform.html" class="navLinkSmall">Plataforma</a>
+            <a href="../pages/faq.html" class="navLinkSmall">FAQ</a>
+            <a href="../pages/contact.html" class="navLinkSmall">Contacto</a>
+            <a href="../pages/donate.html" class="navLinkSmall">Donar</a>
         </div>
     </nav>
 
@@ -42,7 +55,7 @@
                 pellentesque. In sed tempus vitae suspendisse. Vitae tellus quam.
             </p>
         </div>
-        <div class="cardsContainerAboutUs row row-cols-3 justify-content-center align-items-center">
+        <div class="cardsContainerAboutUs row row-cols-md-3 justify-content-center align-items-center">
             <div class="cardAboutUs">
                 <img src="../resources/aboutUs/hr.png" alt="">
                 <figcaption>Recursos humanos</figcaption>
@@ -102,7 +115,7 @@
     </main>
 
     <footer>
-        <a href="/" class="logo"></a>
+        <a href="../index.html" class="logo"></a>
         <div class="footerPages">
             <h6>SECCIONES</h6>
             <ul>

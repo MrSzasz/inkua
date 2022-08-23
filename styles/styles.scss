@@ -104,9 +104,19 @@ h2 {
     }
 }
 
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 700px) {
+    #goToTop {
+        padding: .5em;
+        height: 40px;
+        width: 40px;
+    }
+}
+
 // =================================== NAVBAR =================================== //
 
-nav {
+.navBar {
 
     position: fixed;
     top: 0;
@@ -138,6 +148,82 @@ nav {
     }
 }
 
+// =================================== SMALL NAVBAR =================================== //
+
+#expandNavBar {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    z-index: 200;
+    padding: 5px 10px;
+    background-color: $white;
+    border: none;
+    border-radius: 5px;
+    transition: ease all .25s;
+
+    i {
+        color: $blue;
+    }
+
+    &:hover {
+        background-color: $darkBlue;
+
+        i {
+            color: $white;
+        }
+    }
+}
+
+#smallScreen {
+    height: 100vh;
+    width: 100vw;
+    right: -100vw;
+    background-color: $white;
+    color: #000000 !important;
+    display: flex;
+    flex-direction: column;
+    @include bgImg("../resources/navbar/navBg.svg");
+    padding: 10%;
+
+    .navLinksContainerSmall {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .navLinkSmall {
+            font-weight: bold;
+            font-size: larger
+        }
+    }
+}
+
+.logoSmall {
+    @extend .logo;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    z-index: 100;
+}
+
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 900px) {
+    #bigScreen {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+
+    [data-big-hide],
+    .logoSmall {
+        display: none;
+    }
+}
+
 // =================================== MAIN =================================== //
 
 .mainIndex {
@@ -164,6 +250,7 @@ nav {
         }
 
         .languagesButton {
+            display: none;
             @extend .inkuaButton;
             position: absolute;
             bottom: 2em;
@@ -178,231 +265,466 @@ nav {
             }
         }
     }
-}
 
-.benefits {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 40vh;
-    height: min-content;
-    padding: 5% 0 5% 10%;
-    overflow: hidden;
+    .benefits {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 40vh;
+        height: min-content;
+        padding: 5% 0 5% 10%;
+        overflow: hidden;
 
-    .curveShapeIn {
-        position: absolute;
-        top: -95%;
-        right: -8%;
-        border: 3px solid $darkBlue;
-        width: 432px;
-        height: 400px;
-        border-radius: 0 25% 0 25%;
-    }
-
-    .curveShapeOut {
-        @extend .curveShapeIn;
-        top: -75%;
-        right: -5%;
-    }
-
-    h2 {
-        color: $darkBlue;
-        font-weight: 500;
-        font-size: 35px;
-    }
-
-    ul {
-        list-style: none;
-
-        li {
-            padding: .5em 0;
+        .curveShapeIn {
+            position: absolute;
+            top: -95%;
+            right: -8%;
+            border: 3px solid $darkBlue;
+            width: 432px;
+            height: 400px;
+            border-radius: 0 25% 0 25%;
         }
-    }
-}
 
-
-.openSource {
-    position: relative;
-    min-height: 100vh;
-    height: min-content;
-    display: flex;
-    align-items: center;
-    @include bgImg("../resources/index/indexOpenSource.png");
-    padding-left: 10%;
-
-    .dots {
-        position: absolute;
-        right: 0;
-        top: -15%;
-        width: 150px;
-        height: 200px;
-        background-color: transparent;
-        background-image: radial-gradient($blue 10%, transparent 11%);
-        background-size: 25px 25px;
-        background-position: 0 0, 5px 5px;
-        background-repeat: repeat;
-    }
-
-    .openSourceText {
-        width: 45%;
+        .curveShapeOut {
+            @extend .curveShapeIn;
+            top: -75%;
+            right: -5%;
+        }
 
         h2 {
             color: $darkBlue;
-            font-weight: bold;
-            word-spacing: .5em;
-            line-height: 1.5em;
+            font-weight: 500;
+            font-size: 35px;
         }
 
-        p {
-            line-height: 1.5em;
-            width: 80%;
+        ul {
+            list-style: none;
+
+            li {
+                padding: .5em 0;
+            }
         }
     }
-}
 
-.inkuaNumbers {
-    background-color: $darkBlue;
-    min-height: 80vh;
-    height: min-content;
-    text-align: center;
-    color: $white;
-    padding: 5% 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
-    .inkuaNumbersIntroContainer {
+    .openSource {
+        position: relative;
+        min-height: 100vh;
+        height: min-content;
+        display: flex;
+        align-items: center;
+        @include bgImg("../resources/index/indexOpenSource.png");
+        padding-left: 10%;
+
+        .dots {
+            position: absolute;
+            right: 0;
+            top: -15%;
+            width: 150px;
+            height: 200px;
+            background-color: transparent;
+            background-image: radial-gradient($blue 10%, transparent 11%);
+            background-size: 25px 25px;
+            background-position: 0 0, 5px 5px;
+            background-repeat: repeat;
+        }
+
+        .openSourceText {
+            width: 45%;
+
+            h2 {
+                color: $darkBlue;
+                font-weight: bold;
+                word-spacing: .5em;
+                line-height: 1.5em;
+            }
+
+            p {
+                line-height: 1.5em;
+                width: 80%;
+            }
+        }
+    }
+
+    .inkuaNumbers {
+        background-color: $darkBlue;
+        min-height: 80vh;
+        height: min-content;
+        text-align: center;
+        color: $white;
+        padding: 5% 10%;
         display: flex;
         flex-direction: column;
-        gap: 1em;
-        width: max-content;
-        border-bottom: 3px solid $white;
-        margin: auto;
-
-        h2 {
-            font-size: 35px;
-            color: $white !important;
-        }
-
-        h3 {
-            font-weight: normal;
-            font-size: large;
-            padding-bottom: 2em;
-        }
-    }
-
-    .inkuaNumbersContainer {
-        display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5% 5% 0 5%;
 
-        h4 {
-            font-size: 50px;
-        }
-    }
-}
-
-.partners {
-    min-height: 80vh;
-    height: min-content;
-    text-align: center;
-    padding: 5% 0 10% 0;
-
-    h2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 20vh;
-        font-size: 35px;
-        font-weight: normal;
-        color: $darkBlue;
-    }
-
-    .bottomPartners {
-        display: flex;
-        width: 100%;
-        @include bgImg("../resources/index/partnersBlob.svg");
-        min-height: 70vh;
-
-        .brands {
+        .inkuaNumbersIntroContainer {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            gap: 1em;
+            width: max-content;
+            border-bottom: 3px solid $white;
+            margin: auto;
 
-            .brandImage {
-                height: auto;
-                width: 150px;
+            h2 {
+                font-size: 35px;
+                color: $white !important;
+            }
+
+            h3 {
+                font-weight: normal;
+                font-size: large;
+                padding-bottom: 2em;
             }
         }
 
-        .partnersLeft {
-            width: 30%;
+        .inkuaNumbersContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5% 5% 0 5%;
+
+            h4 {
+                font-size: 50px;
+            }
+        }
+    }
+
+    .partners {
+        min-height: 80vh;
+        height: min-content;
+        text-align: center;
+        padding: 5% 0 10% 0;
+
+        h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+            font-size: 35px;
+            font-weight: normal;
+            color: $darkBlue;
         }
 
-        .partnersCenter {
-            width: 40%;
-            @include bgImg("../resources/index/phone.png");
-            background-size: contain;
+        .bottomPartners {
+            display: flex;
+            width: 100%;
+            @include bgImg("../resources/index/partnersBlob.svg");
+            min-height: 70vh;
+
+            .brands {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                .brandImage {
+                    height: auto;
+                    width: 150px;
+                }
+            }
+
+            .partnersLeft {
+                width: 30%;
+            }
+
+            .partnersCenter {
+                width: 40%;
+                @include bgImg("../resources/index/phone.png");
+                background-size: contain;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+
+                h3 {
+                    font-size: large;
+                    margin: 0;
+                    color: $blue;
+                }
+            }
+
+            .partnersRight {
+                width: 30%;
+            }
+        }
+    }
+
+    .newsletter {
+        min-height: 50vh;
+        height: min-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+        padding: 5% 25%;
+        background-color: $blue;
+        color: $white;
+        text-align: center;
+
+        input {
+            width: 70%;
+            border-radius: 50px;
+            border: none;
+            padding: .5em;
+            padding: .25em .75em;
+            border: 1px solid darkgray;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin: 0;
+            color: $white !important;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .newsletterButton {
+            @extend .inkuaButton;
+            background-color: $blue;
+            border: 2px solid $white;
+            color: $white;
+        }
+    }
+}
+
+
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 700px) {
+    .mainIndex {
+        .introContainer {
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 0;
+            background-position: center -100px;
+
+            .indexIntro {
+                width: 100%;
+                border-radius: 0;
+            }
+
+            .languagesButton {
+                display: none;
+            }
+        }
+
+        .benefits {
+
+            .curveShapeIn,
+            .curveShapeOut {
+                display: none;
+            }
+        }
+
+
+        .partners {
+            .bottomPartners {
+                display: flex;
+                flex-direction: column;
+                justify-self: center;
+                align-items: center;
+                width: 100%;
+                background-size: 150%;
+
+                .partnersLeft,
+                .partnersRight {
+                    gap: 3em;
+                }
+
+                .partnersCenter {
+                    height: 90vh;
+                    margin: 2em 0;
+                }
+            }
+        }
+
+        .newsletter {
+            padding: 10%;
+
+            input {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .mainIndex {
+        .introContainer {
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 0;
+            background-position: center -100px;
+
+            .indexIntro {
+                background-color: $white;
+                width: 100%;
+                border-radius: 0;
+                padding: 5%;
+
+                .inkuaButtonActive {
+                    margin: auto;
+                }
+            }
+
+            .languagesButton {
+                display: none;
+            }
+        }
+
+        .benefits {
+            padding-top: 0;
+
+            ul {
+                padding: .5em 0;
+            }
+        }
+
+        .openSource {
+            background-position: 70% -50px;
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 0;
+
+            .dots {
+                top: -10%;
+                width: 100px;
+            }
+
+            .openSourceText {
+                width: 100%;
+                background-color: $white;
+                padding: 7%;
+
+                h2 {
+                    font-size: large;
+                    color: $darkBlue;
+                    font-weight: bold;
+                    word-spacing: .5em;
+                    line-height: 1.5em;
+                    padding-bottom: 1em;
+                }
+
+                p {
+                    font-size: medium;
+                    line-height: 1.5em;
+                    width: 100%;
+                }
+            }
+        }
+
+        .inkuaNumbers {
+            background-color: $darkBlue;
+            min-height: 80vh;
+            height: min-content;
+            text-align: center;
+            color: $white;
+            padding: 5%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 1em;
 
-            h3 {
-                font-size: large;
-                margin: 0;
-                color: $blue;
+            .inkuaNumbersIntroContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                width: max-content;
+                border-bottom: 3px solid $white;
+                margin: auto;
+
+                h2 {
+                    font-size: 30px;
+                    color: $white !important;
+                }
+
+                h3 {
+                    font-weight: normal;
+                    font-size: large;
+                    padding-bottom: 2em;
+                }
+            }
+
+            .inkuaNumbersContainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5% 5% 0 5%;
+
+                h4 {
+                    font-size: 50px;
+                }
             }
         }
 
-        .partnersRight {
-            width: 30%;
+        .partners {
+            min-height: 80vh;
+            height: min-content;
+            text-align: center;
+            padding: 5% 0 10% 0;
+
+            h2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 20vh;
+                font-size: 35px;
+                font-weight: normal;
+                color: $darkBlue;
+            }
+
+            .bottomPartners {
+                display: flex;
+                flex-direction: column;
+                justify-self: center;
+                align-items: center;
+                width: 100%;
+                @include bgImg("../resources/index/partnersBlob.svg");
+                background-size: 150%;
+
+                .brands {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .brandImage {
+                        height: auto;
+                        width: 150px;
+                    }
+                }
+
+                .partnersLeft {
+                    width: 30%;
+                    gap: 3em;
+                }
+
+                .partnersCenter {
+                    height: 90vh;
+                    width: 100%;
+                    margin: 2em 0;
+                }
+
+                .partnersRight {
+                    width: 30%;
+                    gap: 3em;
+                }
+            }
         }
-    }
-}
 
-.newsletter {
-    min-height: 50vh;
-    height: min-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5em;
-    padding: 0 25%;
-    background-color: $blue;
-    color: $white;
-    text-align: center;
+        .newsletter {
+            padding: 10%;
 
-    input {
-        width: 70%;
-        border-radius: 50px;
-        border: none;
-        padding: .5em;
-        padding: .25em .75em;
-        border: 1px solid darkgray;
-    }
-
-    h2 {
-        font-weight: normal;
-        margin: 0;
-        color: $white !important;
-    }
-
-    p {
-        margin: 0;
-    }
-
-    .newsletterButton {
-        @extend .inkuaButton;
-        background-color: $blue;
-        border: 2px solid $white;
-        color: $white;
+            input {
+                width: 100%;
+            }
+        }
     }
 }
 
@@ -423,6 +745,7 @@ nav {
     width: 100%;
 
     .cardAboutUs {
+        width: min-content;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -462,7 +785,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 1.5em;
-    padding: 0 25%;
+    padding: 5% 25%;
     background-color: $gray;
     color: #000000;
     text-align: center;
@@ -471,6 +794,35 @@ nav {
         color: $darkBlue;
     }
 }
+
+
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 620px) {
+    .mainAboutUs {
+        padding-top: 70px;
+    }
+
+    .aboutUsIntro {
+        padding: 0% 5% 0 5%;
+
+        h1 {
+            color: $darkBlue;
+            margin-bottom: 1em;
+        }
+    }
+
+    .cardsContainerAboutUs {
+        padding: 0%;
+        margin: auto;
+        width: 80%;
+    }
+
+    .ourTeam {
+        padding: 10%;
+    }
+}
+
 
 // =================================== JOIN US =================================== //
 
@@ -591,6 +943,106 @@ nav {
     }
 }
 
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 900px) {
+    .mainJoinUs {
+        .buttonGroup {
+            border-bottom: 2px solid $gray;
+            width: max-content;
+            display: flex;
+            gap: 2em;
+
+            .sectionButton {
+                background-color: transparent;
+                border: none;
+                border-bottom: 2px solid transparent;
+                font-weight: 500;
+                transition: ease all .25s;
+            }
+
+            .sectionButtonActive {
+                color: $blue;
+                border-bottom: 3px solid $blue;
+            }
+        }
+
+        padding: 10%;
+
+        .selectorJoinUs {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .joinUsCard {
+                width: 100%;
+            }
+
+            .peopleImg {
+                display: none;
+            }
+        }
+
+        .testimonialJoinUs {
+            .sliderTestimonials {
+                flex-direction: column;
+                gap: 1em;
+
+                .testimonialCards {
+                    min-height: 300px;
+                    width: 60%;
+                    height: min-content;
+                    justify-content: space-evenly;
+                    gap: 2em;
+                    padding: 5%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .mainJoinUs {
+        padding-top: 70px;
+
+        h1 {
+            text-align: center;
+        }
+
+        .buttonGroup {
+            border-bottom: 2px solid $gray;
+            width: max-content;
+            display: flex;
+            gap: 1em;
+
+            .sectionButton {
+                font-size: small;
+                font-weight: 500;
+            }
+        }
+
+        .inkuaButtonActive {
+            margin: auto;
+        }
+
+        .testimonialJoinUs {
+            .sliderTestimonials {
+                .testimonialCards {
+                    min-height: 300px;
+                    width: 100%;
+                    height: min-content;
+                    justify-content: space-evenly;
+                    gap: 2em;
+                    padding: 5%;
+                }
+            }
+        }
+    }
+}
+
 // =================================== PLATFORM =================================== //
 
 .mainPlatform {
@@ -632,6 +1084,20 @@ nav {
     }
 }
 
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 600px) {
+    .mainPlatform {
+        padding-top: 70px;
+        @include bgImg("../resources/platform/svgBack4.svg");
+
+        form {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
 // =================================== FAQ =================================== //
 
 .mainFaq {
@@ -659,6 +1125,29 @@ nav {
             &::after {
 
                 background-image: url("../resources/faq/arrow.svg");
+            }
+        }
+    }
+}
+
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 350px) {
+    .mainFaq {
+        padding-top: 70px;
+
+        h1 {
+            font-size: 25px;
+        }
+
+        .accordion-item {
+            .accordion-button {
+                font-size: 16px;
+
+            }
+
+            .accordion-body {
+                padding: 5% 0;
             }
         }
     }
@@ -738,6 +1227,43 @@ nav {
     }
 }
 
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 600px) {
+    .mainContact {
+        padding-top: 70px;
+
+        form {
+            .inputSection {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+            }
+
+            .capthaContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                .checkboxContainer {
+                    display: flex;
+                    align-items: center;
+                    gap: 1em;
+
+                    input {
+                        width: min-content;
+                    }
+                }
+            }
+        }
+    }
+}
+
 // =================================== DONATE =================================== //
 
 .mainDonations {
@@ -745,7 +1271,8 @@ nav {
 
     .donationTop {
         background-color: rgba(0, 0, 0, 0.5);
-        height: 90vh;
+        min-height: 90vh;
+        height: min-content;
         padding: 10%;
 
         .upperText {
@@ -843,6 +1370,62 @@ nav {
     }
 }
 
+//========================================  MEDIA QUERIES  ========================================//
+
+@media only screen and (max-width: 950px) {
+    .mainDonations {
+        overflow: hidden;
+        background-position: center;
+
+        .donationTop {
+            display: flex;
+            flex-direction: column;
+            padding: 5%;
+
+            .upperText {
+                padding-top: 70px;
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                width: 100%;
+
+                h1 {
+                    font-size: 30px;
+                }
+
+                h2 {
+                    width: 100%;
+                    font-size: 20px;
+                    font-weight: lighter;
+                }
+            }
+
+            .donationLeft {
+                gap: 1em;
+            }
+        }
+
+        .donationRight {
+            .donationContainer {
+                .topButtons {
+                    flex-direction: column;
+                }
+
+                input {
+                    margin: 1em 0;
+                }
+            }
+        }
+
+        .donationBottom {
+            padding: 10%;
+            background-color: $white;
+            color: #000000;
+            text-align: center;
+        }
+    }
+}
+
 // =================================== FOOTER =================================== //
 
 footer {
@@ -931,5 +1514,43 @@ footer {
                 }
             }
         }
+    }
+}
+
+//========================================  MEDIA QUERIES  ========================================//
+
+
+@media only screen and (max-width: 768px) {
+    footer {
+        text-align: center;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+
+        .footerPages {
+            width: max-content;
+
+            li {
+                font-size: large;
+                letter-spacing: 1.5px;
+
+                i {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    footer {
+        text-align: center;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 80px;
     }
 }

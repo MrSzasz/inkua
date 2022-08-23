@@ -18,8 +18,8 @@
 
 <body>
 
-    <nav data-bg="true">
-        <a href="/" class="logo"></a>
+    <nav class="navBar" data-bg="true" id="bigScreen">
+        <a href="../index.html" class="logo"></a>
         <div class="navLinksContainer">
             <a href="./aboutUs.html" class="navLink">Sobre nosotros</a>
             <a href="./joinUs.html" class="navLink">Forma parte</a>
@@ -30,8 +30,21 @@
         </div>
     </nav>
 
+    <button data-big-hide="true" id="expandNavBar"><i class="fa-solid fa-bars"></i></button>
+    <nav data-big-hide="true" class="navBar" data-bg="true" data-hidden="true" id="smallScreen">
+        <a href="../index.html" class="logo logoSmall"></a>
+        <div class="navLinksContainerSmall">
+            <a href="./aboutUs.html" class="navLinkSmall">Sobre nosotros</a>
+            <a href="./joinUs.html" class="navLinkSmall">Forma parte</a>
+            <a href="./platform.html" class="navLinkSmall">Plataforma</a>
+            <a href="./faq.html" class="navLinkSmall">FAQ</a>
+            <a href="./contact.html" class="navLinkSmall">Contacto</a>
+            <a href="#" class="navLinkSmall">Donar</a>
+        </div>
+    </nav>
+
     <main class="mainDonations">
-        <div class="donationTop row row-cols-2 align-items-center">
+        <div class="donationTop row row-cols-1 row-cols-md-2 align-items-center">
             <div class="donationLeft">
                 <div class="upperText">
                     <h1>Support our cause</h1>
@@ -41,7 +54,7 @@
             </div>
             <div class="donationRight">
                 <div class="donationContainer">
-                    <div class="d-flex w-100 gap-3">
+                    <div class="topButtons d-flex w-100 gap-3">
                         <button class="inkuaButtonActive">Monthly</button>
                         <button class="inkuaButton">One time</button>
                     </div>
@@ -62,7 +75,7 @@
     </main>
 
     <footer>
-        <a href="/" class="logo"></a>
+        <a href="../index.html" class="logo"></a>
         <div class="footerPages">
             <h6>SECCIONES</h6>
             <ul>

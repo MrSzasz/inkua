@@ -1,16 +1,41 @@
 $(document).ready(function () {
-  let navBar = $("nav");
+
+  let smallNavBar = $("#smallScreen")
+
+  function hideNavBar() {
+    if (smallNavBar.attr("data-hidden") === "false") {
+      smallNavBar.animate({
+        right: "-100vw"
+      }, 500, "linear");
+      smallNavBar.attr("data-hidden", "true")
+    } else {
+      smallNavBar.animate({
+        right: "0vw"
+      }, 500, "linear");
+      smallNavBar.attr("data-hidden", "false")
+    }
+  }
+
+  $("#expandNavBar").click(() => hideNavBar());
+
+
+  let navBar = $(".navBar");
   let navLinks = $(".navLink")
   let bg = navBar.attr("data-bg");
+
   bg ? navLinks.css("color", "#ffffff") : navLinks.css("color", "#000000");
+
   let goToTop = $("#goToTop")
-  goToTop.click((e) => { 
+
+  goToTop.click((e) => {
     e.preventDefault();
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
 
-
-  $(window).scroll((e) => {
+  function changeNavBarColor() {
     let pos = $(window).scrollTop();
     if (pos > 25) {
       navBar.css({
@@ -26,7 +51,8 @@ $(document).ready(function () {
       })
       goToTop.hide()
       bg ? navLinks.css("color", "#ffffff") : navLinks.css("color", "#000000");
-
     }
-  });
+  }
+
+  $(window).scroll(() => changeNavBarColor())
 });

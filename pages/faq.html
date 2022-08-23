@@ -18,8 +18,8 @@
 
 <body>
 
-    <nav>
-        <a href="/" class="logo"></a>
+    <nav class="navBar" id="bigScreen">
+        <a href="../index.html" class="logo"></a>
         <div class="navLinksContainer">
             <a href="./aboutUs.html" class="navLink">Sobre nosotros</a>
             <a href="./joinUs.html" class="navLink">Forma parte</a>
@@ -30,9 +30,22 @@
         </div>
     </nav>
 
+    <button data-big-hide="true" id="expandNavBar"><i class="fa-solid fa-bars"></i></button>
+    <nav data-big-hide="true" class="navBar" data-bg="true" data-hidden="true" id="smallScreen">
+        <a href="../index.html" class="logo logoSmall"></a>
+        <div class="navLinksContainerSmall">
+            <a href="./aboutUs.html" class="navLinkSmall">Sobre nosotros</a>
+            <a href="./joinUs.html" class="navLinkSmall">Forma parte</a>
+            <a href="./platform.html" class="navLinkSmall">Plataforma</a>
+            <a href="#" class="navLinkSmall">FAQ</a>
+            <a href="./contact.html" class="navLinkSmall">Contacto</a>
+            <a href="./donate.html" class="navLinkSmall">Donar</a>
+        </div>
+    </nav>
+
     <main class="mainFaq">
-        <h1>Preguntas frecuentes</h1>
-        <div class="faqAccordion row row-cols-2">
+        <h1 class="w-100">Preguntas frecuentes</h1>
+        <div class="faqAccordion row row-cols-1 row-cols-md-2">
             <div class="accordionLeft">
                 <div class="accordion" id="accordionLeft">
                     <div class="accordion-item">
@@ -107,7 +120,7 @@
     </main>
 
     <footer>
-        <a href="/" class="logo"></a>
+        <a href="../index.html" class="logo"></a>
         <div class="footerPages">
             <h6>SECCIONES</h6>
             <ul>
