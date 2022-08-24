@@ -243,9 +243,11 @@ h2 {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: .5em;
 
             h2 {
                 color: $blue !important;
+                font-size: 37px;
             }
         }
 
@@ -331,13 +333,17 @@ h2 {
         }
 
         .openSourceText {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
             width: 45%;
 
             h2 {
                 color: $darkBlue;
-                font-weight: bold;
+                font-weight: 500;
                 word-spacing: .5em;
-                line-height: 1.5em;
+                line-height: 1em;
+                padding-bottom: .5em;
             }
 
             p {
@@ -567,6 +573,9 @@ h2 {
                 width: 100%;
                 border-radius: 0;
                 padding: 5%;
+                h2{
+                    font-size: 30px;
+                }
 
                 .inkuaButtonActive {
                     margin: auto;
@@ -685,8 +694,7 @@ h2 {
                 justify-self: center;
                 align-items: center;
                 width: 100%;
-                @include bgImg("../resources/index/partnersBlob.svg");
-                background-size: 150%;
+                background-size: 300%;
 
                 .brands {
                     display: flex;
@@ -1307,6 +1315,7 @@ h2 {
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
+            gap: 1em;
         }
     }
 
@@ -1322,12 +1331,34 @@ h2 {
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 30px;
 
-            input {
+            .donationInputContainer {
+                position: relative;
                 width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
                 border-radius: 50px;
                 border: none;
-                padding: .5em 1em;
                 background: linear-gradient(180deg, rgba(3, 76, 140, 0.04) 0%, rgba(3, 76, 140, 0.1) 100%);
+                padding: .5em 1.5em;
+                gap: 1em;
+
+                span {
+                    font-size: large;
+                    font-weight: 500;
+                }
+
+                input {
+                    height: 100%;
+                    width: 100%;
+                    background-color: transparent;
+                    border: none;
+                    padding: .5em 0;
+
+                    &:focus-visible {
+                        outline: transparent;
+                    }
+                }
             }
 
             input[type=number]::-webkit-inner-spin-button,
